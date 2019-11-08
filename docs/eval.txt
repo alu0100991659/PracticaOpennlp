@@ -1,0 +1,8 @@
+https://en.wikipedia.org/wiki/F1_score
+
+https://class.coursera.org/nlp/lecture/142
+
+opennlp SentenceDetectorEvaluator -model models/en-sent.model -data training_data/en-sent.train -encoding UTF-8
+
+"like Dr. Smith,"
+
