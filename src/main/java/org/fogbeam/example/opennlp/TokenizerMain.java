@@ -28,6 +28,7 @@ public class TokenizerMain
  
 		// the model we trained
 		InputStream modelIn = new FileInputStream( "models/en-token.model" ); ///< Modelo entrenado
+		FileOutputStream outputStream = null;
 		
 		try
 		{
@@ -48,7 +49,7 @@ public class TokenizerMain
 			 * Abro el fichero en dónde voy a imprimir los resultados de 
 			 * la tokenización
 			 */
-			FileOutputStream outputStream = new FileOutputStream(args[1]); ///< Fichero de salida
+			outputStream = new FileOutputStream(args[1]); ///< Fichero de salida
 			
 			/* Recorro cada archivo de entrada */
 			for (int i = 0; i < inputFiles.size(); i++) {
@@ -67,7 +68,7 @@ public class TokenizerMain
 					outputStream.write(strToBytes);
 				}
 			}
-			outputStream.close();
+			
 		}
 		catch( IOException e )
 		{
@@ -75,6 +76,8 @@ public class TokenizerMain
 		}
 		finally
 		{
+			if(outputStream != null)
+				outputStream.close();
 			if( modelIn != null )
 			{
 				try
